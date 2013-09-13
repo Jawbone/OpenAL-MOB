@@ -18,6 +18,10 @@
  * OpenSL ES 1.0.1. It is based on source code for the native-audio sample app
  * bundled with NDK.
  */
+ 
+ /*
+  * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
+  */
 
 #include "config.h"
 

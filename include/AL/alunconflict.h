@@ -1,4 +1,4 @@
-#if ALSOFT_REMOVE_CONFLICTS
+#if ALMOB_REMOVE_CONFLICTS
 #  undef alAuxiliaryEffectSlotf
 #  undef alAuxiliaryEffectSlotfv
 #  undef alAuxiliaryEffectSloti
@@ -153,5 +153,5 @@
 #  undef alcSetThreadContext
 #  undef alcSuspendContext
 #  undef alcGetDeviceReferenceCount
-#  undef ALSOFT_REMOVE_CONFLICTS
-#endif // ALSOFT_REMOVE_CONFLICTS
+#  undef ALMOB_REMOVE_CONFLICTS
+#endif // ALMOB_REMOVE_CONFLICTS

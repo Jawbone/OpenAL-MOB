@@ -164,13 +164,17 @@
     <ClInclude Include="..\include\AL\efx-presets.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\AL\alconflict.h" />
-    <ClInclude Include="..\include\AL\alunconflict.h" />
     <ClInclude Include="..\mob\Include\alConfigMob.h">
       <Filter>Source Files\mob</Filter>
     </ClInclude>
     <ClInclude Include="..\mob\Include\alConfigMobDefs_inl.h">
       <Filter>Source Files\mob</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\AL\alconflict.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\AL\alunconflict.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

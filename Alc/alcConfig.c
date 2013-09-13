@@ -1,6 +1,6 @@
 /**
  * OpenAL cross platform audio library
- * Copyright (C) 1999-2007 by authors.
+ * Copyright (C) 1999-2007, 2013 by authors.
  * This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
  *  License as published by the Free Software Foundation; either
@@ -16,7 +16,10 @@
  *  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  *  Boston, MA  02111-1307, USA.
  * Or go to http://www.gnu.org/copyleft/lgpl.html
+ *
+ * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
  */
+
 
 #ifdef _WIN32
 #ifdef __MINGW32__

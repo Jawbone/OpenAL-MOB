@@ -16,6 +16,8 @@
  *  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  *  Boston, MA  02111-1307, USA.
  * Or go to http://www.gnu.org/copyleft/lgpl.html
+ *
+ * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
  */
 
 #include "config.h"
