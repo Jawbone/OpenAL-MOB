@@ -330,7 +330,7 @@
 			dependencies = (
 			);
 			name = "OpenAL-MOB-mac-dynamic";
-			productName = "OpenAL-soft-mac";
+			productName = "OpenAL-MOB-mac";
 			productReference = 651A2ED317B8FDDF00C08403 /* libOpenAL-MOB-mac-dynamic.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
