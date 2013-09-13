@@ -363,7 +363,7 @@ static __inline ALuint NextPowerOf2(ALuint value)
 static __inline ALint fastf2i(ALfloat f)
 {
 #ifdef HAVE_LRINTF
-    return lrintf(f);
+    return (ALint)lrintf(f);
 #elif defined(_MSC_VER) && defined(_M_IX86)
     ALint i;
     __asm fld f

@@ -327,7 +327,7 @@ int ConfigValueInt(const char *blockName, const char *keyName, int *ret)
     const char *val = GetConfigValue(blockName, keyName, "");
     if(!val[0]) return 0;
 
-    *ret = strtol(val, NULL, 0);
+    *ret = (int)strtol(val, NULL, 0);
     return 1;
 }
 
@@ -336,7 +336,7 @@ int ConfigValueUInt(const char *blockName, const char *keyName, unsigned int *re
     const char *val = GetConfigValue(blockName, keyName, "");
     if(!val[0]) return 0;
 
-    *ret = strtoul(val, NULL, 0);
+    *ret = (unsigned int)strtoul(val, NULL, 0);
     return 1;
 }
 

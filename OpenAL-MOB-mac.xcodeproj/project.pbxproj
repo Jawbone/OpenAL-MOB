@@ -158,19 +158,27 @@
 			path = Include;
 			sourceTree = "<group>";
 		};
-		C9563025176E64DE00A5306E = {
+		653A90F217E2DEA700955CF3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				651A2EE017B900A400C08403 /* mob */,
 				C9C33CCE176E69FE00D6B448 /* CoreServices.framework */,
 				C9C33CCC176E692900D6B448 /* AudioUnit.framework */,
 				C9C33CCA176E691300D6B448 /* AudioToolbox.framework */,
 				C9C33CC8176E690D00D6B448 /* CoreAudio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9563025176E64DE00A5306E = {
+			isa = PBXGroup;
+			children = (
+				651A2EE017B900A400C08403 /* mob */,
 				C9EAAFCF176E674A00885E78 /* OpenAL32 */,
 				C9EAAFC1176E671B00885E78 /* include */,
 				C9EAAF8B176E668900885E78 /* Alc */,
 				C9563039176E65C800A5306E /* build_mac */,
 				C956302F176E64DE00A5306E /* Products */,
+				653A90F217E2DEA700955CF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
