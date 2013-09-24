@@ -201,7 +201,7 @@
     <ClCompile Include="..\utils\openal-info.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="OpenAL32-MOB.vcxproj">
+    <ProjectReference Include="OpenAL-MOB.vcxproj">
       <Project>{010e507b-c390-4509-b4fd-1b25298b1e15}</Project>
       <Private>false</Private>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>

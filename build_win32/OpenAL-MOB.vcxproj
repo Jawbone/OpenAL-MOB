@@ -18,7 +18,7 @@
     <ProjectGUID>{010E507B-C390-4509-B4FD-1B25298B1E15}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
-    <ProjectName>OpenAL32-MOB</ProjectName>
+    <ProjectName>OpenAL-MOB</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -60,21 +60,19 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VCInstallDir)PlatformSDK\include;$(IncludePath);$(ProjectDir);..\include;..\OpenAL32\Include;..\mob\Include</IncludePath>
-    <TargetName>OpenAL32DebugWin32</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(VCInstallDir)PlatformSDK\include;$(IncludePath);$(ProjectDir);..\include;..\OpenAL32\Include;..\mob\Include</IncludePath>
-    <OutDir>$(SolutionDir)</OutDir>
-    <TargetName>OpenAL32ReleaseWin32</TargetName>
+    <TargetName>$(ProjectName)$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
     <IncludePath>$(VCInstallDir)PlatformSDK\include;$(IncludePath);$(ProjectDir);..\include;..\OpenAL32\Include;..\mob\Include</IncludePath>
+    <TargetName>$(ProjectName)$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/external/OpenAL-Soft/OpenAL32/Include;$(SolutionDir)/external/OpenAL-Soft/include;$(SolutionDir)/external/OpenAL-Soft/build_win32;$(SolutionDir)/external/OpenAL-Soft/ex/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsC</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -117,7 +115,6 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
     <ClCompile>
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/external/OpenAL-Soft/OpenAL32/Include;$(SolutionDir)/external/OpenAL-Soft/include;$(SolutionDir)/external/OpenAL-Soft/build_win32;$(SolutionDir)/external/OpenAL-Soft/ex/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -159,7 +156,6 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/external/OpenAL-Soft/OpenAL32/Include;$(SolutionDir)/external/OpenAL-Soft/include;$(SolutionDir)/external/OpenAL-Soft/build_win32;$(SolutionDir)/external/OpenAL-Soft/ex/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsC</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>

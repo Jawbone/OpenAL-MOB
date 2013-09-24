@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenAL32-MOB", "OpenAL32-MOB.vcxproj", "{010E507B-C390-4509-B4FD-1B25298B1E15}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenAL-MOB", "OpenAL-MOB.vcxproj", "{010E507B-C390-4509-B4FD-1B25298B1E15}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "makehrtf", "makehrtf.vcxproj", "{4D3E7FA6-571F-48A9-BA4E-E3197A8317DB}"
 EndProject
