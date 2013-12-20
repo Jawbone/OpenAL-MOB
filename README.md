@@ -69,7 +69,7 @@ const MOB_ConfigKeyValue g_soundConfig[] =
 #endif // #if PLAT_WIN
 	// If you want to use HRTFs, you should be outputting to Stereo sound
 	{ MOB_ConfigKey_root_channels, "stereo" },
-	{ MOB_ConfigKey_root_hrtf    , 1 },
+	{ MOB_ConfigKey_root_hrtf    , (const char*)1 }, // This is a union, and const char * is the first type, so we have to cast it.
 	{ MOB_ConfigKey_NULL         , 0 }, // This is the terminator for the config array
 };
 
