@@ -61,7 +61,7 @@ OpenAL-Soft pulls the configuration properties from a text file. Since that does
 #include <AL/al.h>
 #include <AL/alext.h>
 
-const MOB_ConfigKeyValue soundConfig[] =
+const MOB_ConfigKeyValue g_soundConfig[] =
 {
 #if PLAT_WIN
   // The default sound output on Windows can't be forced to 44.1 KHz. Outputting at 44.1 KHz is essential to support HRTF, so adding this is on Windows is a good idea
@@ -72,7 +72,16 @@ const MOB_ConfigKeyValue soundConfig[] =
 	{ MOB_ConfigKey_root_hrtf    , 1 },
 	{ MOB_ConfigKey_NULL         , 0 }, // This is the terminator for the config array
 };
-alSetConfigMOB( soundConfig );
+
+int main( int argc, const char* argv[] )
+{
+	// Before you call alcOpenDevice, set your config
+	alSetConfigMOB( g_soundConfig );
+	ALCdevice  *device = alcOpenDevice(NULL);
+	
+	// Continue on with the standard OpenAL set up
+	...
+}
 
 ```
 For more configuration options, look through mob\Include\alConfigMobDefs_inl.h. All the configuration options in OpenAL-Soft's text file are available using the MOB_ConfigKeyValue structure. 
