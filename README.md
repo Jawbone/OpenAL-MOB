@@ -57,15 +57,19 @@ If you are migrating from an existing OpenAL implementation, it should be straig
 OpenAL-Soft pulls the configuration properties from a text file. Since that doesn't work well for mobile, we have a way to specify them at runtime. 
 
 ``` C++
+#define AL_ALEXT_PROTOTYPES // Without this, it doesn't prototype the functions that OpenAL-Mob adds to the reference implementation. 
+#include <AL/al.h>
+#include <AL/alext.h>
+
 const MOB_ConfigKeyValue soundConfig[] =
 {
 #if PLAT_WIN
   // The default sound output on Windows can't be forced to 44.1 KHz. Outputting at 44.1 KHz is essential to support HRTF, so adding this is on Windows is a good idea
-	{ MOB_ConfigKey_root_drivers , MOB_ConfigValue_String("dsound") }, 
+	{ MOB_ConfigKey_root_drivers , "dsound" }, 
 #endif // #if PLAT_WIN
 	// If you want to use HRTFs, you should be outputting to Stereo sound
-	{ MOB_ConfigKey_root_channels, MOB_ConfigValue_String("stereo" ) },
-	{ MOB_ConfigKey_root_hrtf    , MOB_ConfigValue_Int( 1 ) },
+	{ MOB_ConfigKey_root_channels, "stereo" },
+	{ MOB_ConfigKey_root_hrtf    , 1 },
 	{ MOB_ConfigKey_NULL         , 0 }, // This is the terminator for the config array
 };
 alSetConfigMOB( soundConfig );
