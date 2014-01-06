@@ -87,7 +87,11 @@ int main( int argc, const char* argv[] )
 For more configuration options, look through mob\Include\alConfigMobDefs_inl.h. All the configuration options in OpenAL-Soft's text file are available using the MOB_ConfigKeyValue structure. 
 
 ## Dynamically turning on and off HRTFs
-Because HRTFs are processor expensive, it is a good idea to turn on and off HRTFs when they won't produce a noticeable increase in audio fidelity. HRTFs are designed for playback systems that have binaural separation like headphones and Jambox speakers. 
+Because HRTFs are processor expensive, it is a good idea to turn on and off HRTFs when they won't produce a noticeable increase in audio fidelity. HRTFs are designed for playback systems that have binaural separation like headphones and Jambox speakers. To turn HRTFs on and off, use the following function:
+``` C++
+ALboolean alcDeviceEnableHrtfMOB( ALCdevice *device, ALboolean enable );
+```
+The return value is whether the function succeeded or not. 
 
 On iOS, you can use the following function to determine whether or not HRTFs should be enabled:
 
