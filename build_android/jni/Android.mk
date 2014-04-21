@@ -17,8 +17,8 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../include $(LOCAL_PATH)/../../OpenAL32/Include $(LOCAL_PATH)/../../mob/Include
-LOCAL_MODULE    := OpenAL-MOB-static
-LOCAL_SRC_FILES := ../../Alc/ALc.c ../../Alc/alcConfig.c ../../Alc/alcDedicated.c ../../Alc/alcEcho.c ../../Alc/alcModulator.c ../../Alc/alcReverb.c ../../Alc/alcRing.c ../../Alc/alcThread.c ../../Alc/ALu.c ../../Alc/backends/loopback.c ../../Alc/backends/null.c ../../Alc/backends/opensl.c ../../Alc/backends/wave.c ../../Alc/bs2b.c ../../Alc/helpers.c ../../Alc/hrtf.c ../../Alc/mixer.c ../../Alc/mixer_c.c ../../Alc/mixer_inc.c ../../Alc/mixer_neon.c ../../Alc/mixer_sse.c ../../Alc/panning.c ../../mob/alConfigMob.c ../../OpenAL32/alAuxEffectSlot.c ../../OpenAL32/alBuffer.c ../../OpenAL32/alEffect.c ../../OpenAL32/alError.c ../../OpenAL32/alExtension.c ../../OpenAL32/alFilter.c ../../OpenAL32/alListener.c ../../OpenAL32/alSource.c ../../OpenAL32/alState.c ../../OpenAL32/alThunk.c
+LOCAL_MODULE    := OpenAL-MOB
+LOCAL_SRC_FILES := ../../Alc/ALc.c ../../Alc/alcConfig.c ../../Alc/alcDedicated.c ../../Alc/alcEcho.c ../../Alc/alcModulator.c ../../Alc/alcReverb.c ../../Alc/alcRing.c ../../Alc/alcThread.c ../../Alc/ALu.c ../../Alc/backends/loopback.c ../../Alc/backends/null.c ../../Alc/backends/opensl.c ../../Alc/backends/wave.c ../../Alc/bs2b.c ../../Alc/helpers.c ../../Alc/hrtf.c ../../Alc/mixer.c ../../Alc/mixer_c.c ../../Alc/mixer_neon.c ../../Alc/mixer_sse.c ../../Alc/panning.c ../../mob/alConfigMob.c ../../OpenAL32/alAuxEffectSlot.c ../../OpenAL32/alBuffer.c ../../OpenAL32/alEffect.c ../../OpenAL32/alError.c ../../OpenAL32/alExtension.c ../../OpenAL32/alFilter.c ../../OpenAL32/alListener.c ../../OpenAL32/alSource.c ../../OpenAL32/alState.c ../../OpenAL32/alThunk.c
 
 # set the platform flags
 ifeq ($(APP_ABI),x86)
@@ -27,11 +27,7 @@ else
 	LOCAL_CFLAGS += -D HAVE_NEON -mfloat-abi=softfp -mfpu=neon -marm
 endif
 
-include $(BUILD_STATIC_LIBRARY)
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE    := OpenAL-MOB
-LOCAL_STATIC_LIBRARIES := OpenAL-MOB-static
+#LOCAL_SHARED_LIBRARIES += libOpenSLES
+LOCAL_LDFLAGS += -lOpenSLES
 
 include $(BUILD_SHARED_LIBRARY)
