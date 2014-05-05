@@ -79,6 +79,14 @@ int main( int argc, const char* argv[] )
 	alSetConfigMOB( g_soundConfig );
 	ALCdevice  *device = alcOpenDevice(NULL);
 	
+	// the parameters
+	const ALint params[] = 
+	{
+		ALC_FREQUENCY, 44100,   // The HRTF only works for 44.1KHz output.      
+		0,			// Null terminator
+	};
+	ALCcontext *context = alcCreateContext(device, params);
+	
 	// Continue on with the standard OpenAL set up
 	...
 }
