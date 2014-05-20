@@ -19,8 +19,9 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
+#include "config-oal.h"
 
+#ifdef HAVE_PULSEAUDIO
 #include <string.h>
 
 #include "alMain.h"
@@ -1552,3 +1553,4 @@ void alc_pulse_probe(enum DevProbe type)
 { (void)type; }
 
 #endif
+#endif // HAVE_PULSEAUDIO

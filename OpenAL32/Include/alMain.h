@@ -61,6 +61,8 @@ typedef unsigned long ALuint64;
 #elif (SIZEOF_LONG_LONG == 8)
 typedef long long ALint64;
 typedef unsigned long long ALuint64;
+#else
+#error No INT64??
 #endif
 
 typedef ptrdiff_t ALintptrEXT;

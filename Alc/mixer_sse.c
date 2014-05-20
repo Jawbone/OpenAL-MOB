@@ -19,7 +19,7 @@
  *
  * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
  */
-#include "config.h"
+#include "config-oal.h"
 
 #ifdef HAVE_SSE
 

@@ -20,7 +20,7 @@
  * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
  */
 
-#include "config.h"
+#include "config-oal.h"
 
 #include <stdlib.h>
 #include <stdio.h>

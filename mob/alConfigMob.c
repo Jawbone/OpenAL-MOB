@@ -15,10 +15,10 @@
  *  Boston, MA  02111-1307, USA.
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
-#include "config.h"
+#include "config-oal.h"
 
 #include <string.h>
-#include "include/alConfigMob.h"
+#include "alConfigMob.h"
 #include "alMain.h"
 #include "AL/alext.h"
 

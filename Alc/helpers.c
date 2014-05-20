@@ -18,7 +18,7 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
+#include "config-oal.h"
 
 #include <stdlib.h>
 #include <time.h>

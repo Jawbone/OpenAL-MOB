@@ -29,7 +29,7 @@
 #endif
 #endif
 
-#include "config.h"
+#include "config-oal.h"
 
 #include <stdlib.h>
 #include <stdio.h>

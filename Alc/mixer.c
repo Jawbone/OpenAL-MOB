@@ -18,7 +18,7 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
+#include "config-oal.h"
 
 #include <math.h>
 #include <stdlib.h>

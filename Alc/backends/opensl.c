@@ -23,8 +23,8 @@
   * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
   */
 
-#include "config.h"
-
+#include "config-oal.h"
+#ifdef HAVE_OPENSL
 #include <stdlib.h>
 
 #include "alMain.h"
@@ -450,3 +450,4 @@ void alc_opensl_probe(enum DevProbe type)
             break;
     }
 }
+#endif // HAVE_OPENSL

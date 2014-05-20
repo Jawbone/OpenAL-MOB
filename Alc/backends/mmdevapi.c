@@ -18,7 +18,9 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
+#include "config-oal.h"
+
+#ifdef HAVE_MMDEVAPI
 
 #define COBJMACROS
 #include <stdlib.h>
@@ -1037,3 +1039,5 @@ void alcMMDevApiProbe(enum DevProbe type)
         CloseHandle(req.FinishedEvt);
     req.FinishedEvt = NULL;
 }
+
+#endif // HAVE_MMDEVAPI

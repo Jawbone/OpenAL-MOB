@@ -20,7 +20,7 @@
  * This file has been modified for OpenAL-MOB from the Original OpenAL-Soft.
  */
 
-#include "config.h"
+#include "config-oal.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -74,11 +74,11 @@ static struct BackendInfo BackendList[] = {
 #ifdef HAVE_SNDIO
     { "sndio", alc_sndio_init, alc_sndio_deinit, alc_sndio_probe, EmptyFuncs },
 #endif
+#ifdef HAVE_DSOUND // MOB: Moving up on priority because it lets us set the sample rate to 44.1KHz, which is necessary for HRTF support
+	{ "dsound", alcDSoundInit, alcDSoundDeinit, alcDSoundProbe, EmptyFuncs },
+#endif
 #ifdef HAVE_MMDEVAPI
     { "mmdevapi", alcMMDevApiInit, alcMMDevApiDeinit, alcMMDevApiProbe, EmptyFuncs },
-#endif
-#ifdef HAVE_DSOUND
-    { "dsound", alcDSoundInit, alcDSoundDeinit, alcDSoundProbe, EmptyFuncs },
 #endif
 #ifdef HAVE_WINMM
     { "winmm", alcWinMMInit, alcWinMMDeinit, alcWinMMProbe, EmptyFuncs },
@@ -914,8 +914,14 @@ static void alc_initconfig(void)
 
     EmulateEAXReverb = MOB_GetConfigValueBool(reverb, emulate_eax, AL_FALSE);
 
-    if(((devs=getenv("ALSOFT_DRIVERS")) && devs[0]) ||
-       MOB_ConfigValueStr(root, drivers, &devs))
+	devs = getenv("ALSOFT_DRIVERS");
+	if ( devs == NULL || devs[0] == '\0' )
+	{
+		// try the config
+		MOB_ConfigValueStr(root, drivers, &devs);
+	}
+
+    if (devs != NULL)
     {
         int n;
         size_t len;
@@ -2671,6 +2677,7 @@ ALC_API ALCdevice* ALC_APIENTRY alcGetContextsDevice(ALCcontext *Context)
     return Device;
 }
 
+#define MRG_DEBUG_OPENDEVICE ( 0 ) 
 
 /* alcOpenDevice
  *
@@ -2681,12 +2688,24 @@ ALC_API ALCdevice* ALC_APIENTRY alcOpenDevice(const ALCchar *deviceName)
     const ALCchar *fmt;
     ALCdevice *device;
     ALCenum err;
+#if MRG_DEBUG_OPENDEVICE
+	enum LogLevel oldLevel;
+#endif // #if MRG_DEBUG_OPENDEVICE
 
+#if MRG_DEBUG_OPENDEVICE
+	oldLevel = LogLevel;
+	LogLevel = LogRef;
+	TrapALCError = ALC_TRUE;
+#endif // #if MRG_DEBUG_OPENDEVICE
     DO_INITCONFIG();
 
     if(!PlaybackBackend.name)
     {
         alcSetError(NULL, ALC_INVALID_VALUE);
+#if MRG_DEBUG_OPENDEVICE
+		LogLevel = oldLevel;
+		TrapALCError = ALC_FALSE;
+#endif // #if MRG_DEBUG_OPENDEVICE
         return NULL;
     }
 
@@ -2697,6 +2716,10 @@ ALC_API ALCdevice* ALC_APIENTRY alcOpenDevice(const ALCchar *deviceName)
     if(!device)
     {
         alcSetError(NULL, ALC_OUT_OF_MEMORY);
+#if MRG_DEBUG_OPENDEVICE
+		LogLevel = oldLevel;
+		TrapALCError = ALC_FALSE;
+#endif // #if MRG_DEBUG_OPENDEVICE
         return NULL;
     }
 
@@ -2871,6 +2894,10 @@ ALC_API ALCdevice* ALC_APIENTRY alcOpenDevice(const ALCchar *deviceName)
         DeleteCriticalSection(&device->Mutex);
         al_free(device);
         alcSetError(NULL, err);
+#if MRG_DEBUG_OPENDEVICE
+		LogLevel = oldLevel;
+		TrapALCError = ALC_FALSE;
+#endif // #if MRG_DEBUG_OPENDEVICE
         return NULL;
     }
 
@@ -2895,6 +2922,10 @@ ALC_API ALCdevice* ALC_APIENTRY alcOpenDevice(const ALCchar *deviceName)
     } while(!CompExchangePtr((XchgPtr*)&DeviceList, device->next, device));
 
     TRACE("Created device %p, \"%s\"\n", device, device->DeviceName);
+#if MRG_DEBUG_OPENDEVICE
+	LogLevel = oldLevel;
+	TrapALCError = ALC_FALSE;
+#endif // #if MRG_DEBUG_OPENDEVICE
     return device;
 }
 

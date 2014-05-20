@@ -59,6 +59,7 @@
 /* Begin PBXFileReference section */
 		6502A42E1786957F00A1B340 /* alconflict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alconflict.h; sourceTree = "<group>"; };
 		6502A42F1786957F00A1B340 /* alunconflict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alunconflict.h; sourceTree = "<group>"; };
+		656FE66118616833004BA602 /* config-oal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "config-oal.h"; sourceTree = "<group>"; };
 		6595D9D717B8E4C5000FCFE4 /* alConfigMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alConfigMob.h; sourceTree = "<group>"; };
 		6595D9D817B8E4C5000FCFE4 /* alConfigMobDefs_inl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alConfigMobDefs_inl.h; sourceTree = "<group>"; };
 		65D2F5A217B8EBEB00B7B009 /* alConfigMob.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alConfigMob.c; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		65E6DAA51769AE0F0059B43F /* mixer_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mixer_defs.h; sourceTree = "<group>"; };
 		65E6DAA61769AE0F0059B43F /* mixer_inc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mixer_inc.c; sourceTree = "<group>"; };
 		65E6DAA91769AE0F0059B43F /* panning.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = panning.c; sourceTree = "<group>"; };
-		65E6DACD1769AF4E0059B43F /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		65E6DACE1769B6500059B43F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		65E6DACF1769B6500059B43F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		65E6DAD41769B7630059B43F /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -151,9 +151,17 @@
 			path = Include;
 			sourceTree = "<group>";
 		};
+		65A8E7E718635646006D3BD2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		65E6DA2E17699B780059B43F = {
 			isa = PBXGroup;
 			children = (
+				65A8E7E718635646006D3BD2 /* New Group */,
 				6595D9D417B8E4C5000FCFE4 /* mob */,
 				65E6DACC1769AF4E0059B43F /* build_ios */,
 				65E6DA861769AE0F0059B43F /* Alc */,
@@ -282,7 +290,7 @@
 		65E6DACC1769AF4E0059B43F /* build_ios */ = {
 			isa = PBXGroup;
 			children = (
-				65E6DACD1769AF4E0059B43F /* config.h */,
+				656FE66118616833004BA602 /* config-oal.h */,
 			);
 			path = build_ios;
 			sourceTree = "<group>";
@@ -313,10 +321,10 @@
 		65E6DA2F17699B780059B43F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Jawbone;
 			};
-			buildConfigurationList = 65E6DA3217699B780059B43F /* Build configuration list for PBXProject "OpenAL-MOB" */;
+			buildConfigurationList = 65E6DA3217699B780059B43F /* Build configuration list for PBXProject "OpenAL-MOB-ios" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -395,6 +403,7 @@
 					DEBUG,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -402,8 +411,9 @@
 					build_ios,
 					include,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -421,6 +431,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = AL_BUILD_LIBRARY;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -428,7 +439,8 @@
 					build_ios,
 					include,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -460,7 +472,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65E6DA3217699B780059B43F /* Build configuration list for PBXProject "OpenAL-MOB" */ = {
+		65E6DA3217699B780059B43F /* Build configuration list for PBXProject "OpenAL-MOB-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65E6DA4317699B780059B43F /* Debug */,

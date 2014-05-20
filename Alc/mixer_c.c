@@ -1,4 +1,4 @@
-#include "config.h"
+#include "config-oal.h"
 
 #include <assert.h>
 

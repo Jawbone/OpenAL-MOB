@@ -18,8 +18,8 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
-
+#include "config-oal.h"
+#ifdef HAVE_DSOUND
 #include <stdlib.h>
 #include <stdio.h>
 #include <memory.h>
@@ -85,6 +85,7 @@ typedef struct {
     GUID guid;
 } DevMap;
 
+static HWND WindowHandle;
 static DevMap *PlaybackDeviceList;
 static ALuint NumPlaybackDevices;
 static DevMap *CaptureDeviceList;
@@ -375,8 +376,24 @@ static ALCenum DSoundOpenPlayback(ALCdevice *device, const ALCchar *deviceName)
     //DirectSound Init code
     if(SUCCEEDED(hr))
         hr = DirectSoundCreate(guid, &data->DS, NULL);
+
+	if(FAILED(hr))
+	{
+		if(data->DS)
+			IDirectSound_Release(data->DS);
+		if(data->NotifyEvent)
+			CloseHandle(data->NotifyEvent);
+		free(data);
+		ERR("DirectSoundCreate failed: 0x%08lx\n", hr);
+		return ALC_INVALID_VALUE;
+	}
     if(SUCCEEDED(hr))
-        hr = IDirectSound_SetCooperativeLevel(data->DS, GetForegroundWindow(), DSSCL_PRIORITY);
+	{
+		HWND wnd = WindowHandle;
+		if ( wnd == NULL )
+			wnd = GetForegroundWindow();
+        hr = IDirectSound_SetCooperativeLevel(data->DS, wnd, DSSCL_PRIORITY);
+	}
     if(FAILED(hr))
     {
         if(data->DS)
@@ -384,7 +401,7 @@ static ALCenum DSoundOpenPlayback(ALCdevice *device, const ALCchar *deviceName)
         if(data->NotifyEvent)
             CloseHandle(data->NotifyEvent);
         free(data);
-        ERR("Device init failed: 0x%08lx\n", hr);
+        ERR("IDirectSound_SetCooperativeLevel failed: 0x%08lx\n", hr);
         return ALC_INVALID_VALUE;
     }
 
@@ -1033,3 +1050,10 @@ void alcDSoundProbe(enum DevProbe type)
             break;
     }
 }
+
+void alcSetWindowMOB( HWND wnd )
+{
+	WindowHandle = wnd;
+}
+
+#endif // HAVE_DSOUND

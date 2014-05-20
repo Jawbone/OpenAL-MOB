@@ -18,8 +18,8 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
-
+#include "config-oal.h"
+#ifdef HAVE_ALSA
 #include <stdlib.h>
 #include <stdio.h>
 #include <memory.h>
@@ -1369,3 +1369,5 @@ void alc_alsa_probe(enum DevProbe type)
             break;
     }
 }
+
+#endif // HAVE_ALSA

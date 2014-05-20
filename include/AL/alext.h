@@ -362,10 +362,14 @@ AL_API void AL_APIENTRY alGetSourcei64vSOFT(ALuint source, ALenum param, ALint64
 
 struct MOB_ConfigKeyValue_Struct;
 typedef void (AL_APIENTRY*LPALSETCONFIGMOB)(const struct MOB_ConfigKeyValue_Struct *);
+<<<<<<< HEAD
 typedef ALboolean (AL_APIENTRY*LPALCDEVICEENABLEHRTFMOB)(ALCdevice *device, ALboolean);
 #ifdef _WIN32
 typedef void (AL_APIENTRY*LPALCSETWINDOWMOB)(ALboolean);
 #endif // _WIN32
+=======
+typedef ALboolean (AL_APIENTRY*LPALCDEVICEENABLEHRTFMOB)(ALCdevice*, ALboolean);
+>>>>>>> 30861aaee447aa8995791ac6c59269a2a52d8c4d
 
 #ifdef AL_ALEXT_PROTOTYPES
 AL_API void AL_APIENTRY alSetConfigMOB( const struct MOB_ConfigKeyValue_Struct *keyValues );

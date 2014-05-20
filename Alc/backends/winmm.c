@@ -18,7 +18,8 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
+#include "config-oal.h"
+#ifdef HAVE_WINMM
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -772,3 +773,5 @@ void alcWinMMProbe(enum DevProbe type)
             break;
     }
 }
+
+#endif // HAVE_WINMM
