@@ -1,8 +1,3 @@
-#ifdef __APPLE__
-#include "TargetConditionals.h"
-#endif
-
-#if TARGET_OS_IPHONE
 /* API declaration export attribute */
 #define AL_API  __attribute__((visibility("default")))
 #define ALC_API __attribute__((visibility("default")))
@@ -17,22 +12,22 @@
 #endif
 
 /* Define to the appropriate 'restrict' keyword */
-#define RESTRICT restrict
+#define RESTRICT	__restrict
 
 /* Define if we have the C11 aligned_alloc function */
 /* #undef HAVE_ALIGNED_ALLOC */
 
 /* Define if we have the posix_memalign function */
-#define HAVE_POSIX_MEMALIGN
+/* #define HAVE_POSIX_MEMALIGN */
 
 /* Define if we have the _aligned_malloc function */
 /* #undef HAVE__ALIGNED_MALLOC */
 
 /* Define if we have SSE CPU extensions */
-/* #undef HAVE_SSE */
+// Define by the .mk script: #define HAVE_SSE
 
 /* Define if we have ARM Neon CPU extensions */
-#define HAVE_NEON
+// Define by the .mk script: #define HAVE_NEON
 
 /* Define if we have the ALSA backend */
 /* #undef HAVE_ALSA */
@@ -62,10 +57,10 @@
 /* #undef HAVE_PULSEAUDIO */
 
 /* Define if we have the CoreAudio backend */
-#define HAVE_COREAUDIO
+/* #undef HAVE_COREAUDIO */
 
 /* Define if we have the OpenSL backend */
-/* #undef HAVE_OPENSL */
+#define HAVE_OPENSL
 
 /* Define if we have the Wave Writer backend */
 #define HAVE_WAVE
@@ -107,13 +102,17 @@
 /* #undef HAVE_PTHREAD_NP_H */
 
 /* Define if we have xmmintrin.h */
-/* #undef HAVE_XMMINTRIN_H */
+#ifdef HAVE_SSE
+#define HAVE_XMMINTRIN_H
+#endif // HAVE_SSE
 
 /* Define if we have arm_neon.h */
-#define HAVE_ARM_NEON_H
+#ifdef HAVE_NEON
+#	define HAVE_ARM_NEON_H
+#endif // HAVE_NEON
 
 /* Define if we have malloc.h */
-/* #undef HAVE_MALLOC_H */
+#define HAVE_MALLOC_H
 
 /* Define if we have cpuid.h */
 /* #undef HAVE_CPUID_H */
@@ -144,4 +143,3 @@
 
 /* Define if we have pthread_setschedparam() */
 #define HAVE_PTHREAD_SETSCHEDPARAM
-#endif // #if TARGET_OS_IPHONE
