@@ -364,7 +364,7 @@ struct MOB_ConfigKeyValue_Struct;
 typedef void (AL_APIENTRY*LPALSETCONFIGMOB)(const struct MOB_ConfigKeyValue_Struct *);
 typedef ALboolean (AL_APIENTRY*LPALCDEVICEENABLEHRTFMOB)(ALCdevice*, ALboolean);
 #ifdef _WIN32
-typedef void (AL_APIENTRY*LPALCSETWINDOWMOB)(ALboolean);
+typedef void (AL_APIENTRY*LPALCSETWINDOWMOB)(HWND wnd);
 #endif // _WIN32
 
 #ifdef AL_ALEXT_PROTOTYPES
