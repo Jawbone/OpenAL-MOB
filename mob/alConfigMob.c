@@ -49,7 +49,7 @@ const MOB_BlockKeyPair g_ex_configPairs[] =
 #undef CONFIG_BLOCK_KEY
 #undef CONFIG_KEY_NULL
 
-AL_API void AL_APIENTRY alSetConfigMOB( MOB_ConfigKeyValue *keyValues )
+AL_API void AL_APIENTRY alSetConfigMOB( const MOB_ConfigKeyValue *keyValues )
 {
 	g_mob_configGlobals.keyValues = keyValues;
 }
